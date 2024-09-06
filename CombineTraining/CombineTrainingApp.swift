@@ -25,7 +25,7 @@ struct CombineTrainingApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            BooksView()
         }
         .modelContainer(sharedModelContainer)
     }
