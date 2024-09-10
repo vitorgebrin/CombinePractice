@@ -12,6 +12,7 @@ struct Book: Codable {
     let title:String
     let subtitle:String?
     let cover_i:Int
+    let first_sentence:[String]
     let id_amazon:[String]
 }
 

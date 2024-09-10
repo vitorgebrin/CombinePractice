@@ -14,10 +14,10 @@ class BooksViewModel: ObservableObject {
     @Published var hasErrors = false
     @Published var error: BookError?
     @Published private(set) var isLoading = false
-    var cancellables:Set<AnyCancellable> = []
+    var cancellables = Set<AnyCancellable>()
     
     func fetchBooks() -> () {
-        let bookUrlString = "https://openlibrary.org/search.json?q=the+lord+of+the+rings&sort=currently_reading&limit=3&lang=en"
+        let bookUrlString = "https://openlibrary.org/search.json?q=the+lord+of+the+rings&sort=currently_reading&limit=4&lang=en"
         if let url = URL(string: bookUrlString) {
             URLSession.shared
                 .dataTaskPublisher(for: url)
@@ -54,49 +54,16 @@ struct BooksView: View {
             if !vm.books.isEmpty{
                 ScrollView{
                     ForEach(vm.books,id: \.id_amazon){ book in
-                        AsyncImage(url:URL(string:"https://covers.openlibrary.org/b/id/\(book.cover_i).jpg") )
+                    
+                        BookCard(coverUrl: "https://covers.openlibrary.org/b/id/\(book.cover_i).jpg", title: book.title, author: book.author_name[0], previewText: book.first_sentence[0])
                     }}
                 } else {ProgressView()}
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
+            
         } detail: {
-            Text("Select an item")
+            Text("Find Book")
         }.onAppear(perform:{
             vm.fetchBooks()
         })
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
     }
 }
 
