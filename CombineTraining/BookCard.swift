@@ -13,6 +13,7 @@ struct BookCard: View {
     let author:String
     let previewText:String
     var body: some View {
+        
         HStack(alignment:.top){
             AsyncImage(url:URL(string:coverUrl)){ image in
                 image
@@ -24,7 +25,7 @@ struct BookCard: View {
             }.frame(width: 80)
             VStack(alignment: .leading){
                 Text(title)
-                    .font(.title2)
+                    .font(.title3)
                 
                 Text("by: \(author)")
                     .font(.caption)
@@ -36,12 +37,12 @@ struct BookCard: View {
                     .padding(.leading,5)
 
             }
-            .padding(.leading,10)
+            .padding(.leading,0)
             .padding(.trailing,10)
             .padding(.top,0)
-            
+            Spacer()
                 
-        }.frame(height: 140)
+        }.padding().frame(maxWidth:.infinity,maxHeight: 160)
         .background(in:RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
         .backgroundStyle(Color(uiColor: .systemGray6))
         

@@ -53,10 +53,11 @@ struct BooksView: View {
         NavigationSplitView {
             if !vm.books.isEmpty{
                 ScrollView{
+                    
                     ForEach(vm.books,id: \.id_amazon){ book in
                     
                         BookCard(coverUrl: "https://covers.openlibrary.org/b/id/\(book.cover_i).jpg", title: book.title, author: book.author_name[0], previewText: book.first_sentence[0])
-                    }}
+                    }}.padding()
                 } else {ProgressView()}
             
         } detail: {
