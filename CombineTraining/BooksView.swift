@@ -84,11 +84,11 @@ struct BooksView: View {
                     .background(Color(uiColor: .systemGray5)).clipShape(RoundedRectangle(cornerRadius: 10))
                 Spacer()
                 if let isLoading = vm.isLoading{
-                    if isLoading{
+                    if !isLoading{
                         ScrollView{
                             ForEach(vm.books,id: \.id_amazon){ book in
+                                NavigationLink{BookDetailedView(book: book)} label: {BookCard(book: book)}
                                 
-                                BookCard(coverUrl: "https://covers.openlibrary.org/b/id/\(book.cover_i).jpg", title: book.title, author: book.author_name[0], previewText: book.first_sentence[0])
                             }
                         }} else{
                             ProgressView()

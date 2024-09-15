@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct BookCard: View {
-    let coverUrl:String
-    let title:String
-    let author:String
-    let previewText:String
+    let book:Book
     var body: some View {
         
         HStack(alignment:.top){
-            AsyncImage(url:URL(string:coverUrl)){ image in
+            AsyncImage(url:URL(string:"https://covers.openlibrary.org/b/id/\(book.cover_i).jpg")){ image in
                 image
                     .resizable()
                     .scaledToFit()
@@ -24,15 +21,17 @@ struct BookCard: View {
                 ProgressView()
             }.frame(width: 80)
             VStack(alignment: .leading){
-                Text(title)
+                Text(book.title)
                     .font(.title3)
+                    .foregroundStyle(.black)
                 
-                Text("by: \(author)")
+                Text("by: \(book.author_name[0])")
                     .font(.caption)
+                    .foregroundStyle(.black)
                     .padding(.leading,5)
                     .padding(.bottom,10)
 
-                Text(previewText)
+                Text(book.first_sentence[0])
                     .font(.caption2).foregroundStyle(.gray)
                     .padding(.leading,5)
 
@@ -50,5 +49,5 @@ struct BookCard: View {
 }
 
 #Preview {
-    BookCard(coverUrl: "https://covers.openlibrary.org/b/id/14625765.jpg", title: "The Lord of the Rings", author: "J.R.R. Tolkien", previewText: "In a hole in the ground there lived a hobbit. Not a nasty diry wet hole, filled with ends of worms and an oozy smell...")
+    BookCard(book: Book(author_name: ["J.R.R. Tolkien"], title: "The Lord of the Rings", subtitle: nil, cover_i: 14625765, first_sentence: ["n a hole in the ground there lived a hobbit. Not a nasty diry wet hole, filled with ends of worms and an oozy smell..."], id_amazon: ["String"]))
 }

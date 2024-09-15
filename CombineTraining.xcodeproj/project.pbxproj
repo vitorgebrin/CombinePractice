@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B06AE282C96FE0D00F5633A /* BookDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B06AE272C96FE0D00F5633A /* BookDetailedView.swift */; };
 		6B83388A2C9056CB00EA5137 /* BookCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8338892C9056CB00EA5137 /* BookCard.swift */; };
 		6BA11D802C8B1E7000062000 /* CombineTrainingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA11D7F2C8B1E7000062000 /* CombineTrainingApp.swift */; };
 		6BA11D842C8B1E7000062000 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA11D832C8B1E7000062000 /* Item.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B06AE272C96FE0D00F5633A /* BookDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailedView.swift; sourceTree = "<group>"; };
 		6B8338892C9056CB00EA5137 /* BookCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCard.swift; sourceTree = "<group>"; };
 		6BA11D7C2C8B1E7000062000 /* CombineTraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CombineTraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA11D7F2C8B1E7000062000 /* CombineTrainingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineTrainingApp.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			children = (
 				6BA11D7F2C8B1E7000062000 /* CombineTrainingApp.swift */,
 				6BD8E1322C8B413300950585 /* BooksView.swift */,
+				6B06AE272C96FE0D00F5633A /* BookDetailedView.swift */,
 				6B8338892C9056CB00EA5137 /* BookCard.swift */,
 				6BD8E1302C8B3C2A00950585 /* BookModel.swift */,
 				6BA11D832C8B1E7000062000 /* Item.swift */,
@@ -271,6 +274,7 @@
 				6BD8E1332C8B413300950585 /* BooksView.swift in Sources */,
 				6BD8E1312C8B3C2A00950585 /* BookModel.swift in Sources */,
 				6BA11D802C8B1E7000062000 /* CombineTrainingApp.swift in Sources */,
+				6B06AE282C96FE0D00F5633A /* BookDetailedView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
