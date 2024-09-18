@@ -58,5 +58,5 @@ struct BookDetailedView: View {
 }
 
 #Preview {
-    BookDetailedView(book: Book(author_name: ["J.R.R. Tolkien"], title: "The Lord of the Rings", subtitle: nil, cover_i: 14625765, first_sentence: ["In a hole in the ground there lived a hobbit. Not a nasty diry wet hole, filled with ends of worms and an oozy smell..."], id_amazon: ["B004EZ4I3C"]))
+    BookDetailedView(book: Book(author_name: ["J.R.R. Tolkien"], title: "The Lord of the Rings", cover_i: 14625765, first_sentence: ["In a hole in the ground there lived a hobbit. Not a nasty diry wet hole, filled with ends of worms and an oozy smell..."], id_amazon: ["B004EZ4I3C"]))
 }

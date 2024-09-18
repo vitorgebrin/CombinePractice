@@ -71,11 +71,11 @@ class BooksViewModel: ObservableObject {
 
 struct BooksView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @Environment(\.dismiss) private var dismiss
     @StateObject var vm = BooksViewModel()
     
     var body: some View {
-        NavigationSplitView {
+        NavigationStack {
             VStack{
                 TextField("Search...", text: $vm.textFieldText)
                     .padding(.leading)
@@ -96,13 +96,19 @@ struct BooksView: View {
                         }
                             }
             }.padding()
-        } detail: {
-            Text("Find Book")
+                .navigationTitle("Search a book")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading){
+                        Button("Cancel"){
+                            dismiss()
+                        }
+                    }
+                }
         }
     }
 }
 
 #Preview {
     BooksView()
-        .modelContainer(for: Item.self, inMemory: true)
 }

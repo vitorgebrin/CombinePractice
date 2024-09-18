@@ -12,7 +12,7 @@ import SwiftData
 struct CombineTrainingApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Book.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,7 +25,7 @@ struct CombineTrainingApp: App {
 
     var body: some Scene {
         WindowGroup {
-            BooksView()
+            MyBooksView()
         }
         .modelContainer(sharedModelContainer)
     }
