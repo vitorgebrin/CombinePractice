@@ -6,13 +6,25 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MyBooksView: View {
+    @Environment(\.modelContext) var modelContext
+    @Query(sort: \Book.title) var books:[Book]
     @State var searchForBook:Bool = false
     var body: some View {
         NavigationStack {
             VStack {
-                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                List{
+                    ForEach(books){ book in
+                        BookCard(book: book)
+                        
+                    }.onDelete(perform: { indexSet in
+                        indexSet.forEach{ index in
+                            let book = books[index]
+                            modelContext.delete(book)
+                        }
+                    })}
             }.navigationTitle("My Books")
             .toolbar {
                 Button{
@@ -29,5 +41,5 @@ struct MyBooksView: View {
 }
 
 #Preview {
-    MyBooksView()
+    MyBooksView().modelContainer(for: Book.self,inMemory: true)
 }

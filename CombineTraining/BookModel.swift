@@ -12,10 +12,10 @@ import SwiftData
 class Book: Codable {
     var author_name:[String]
     var title:String
-    var cover_i:Int
+    @Attribute(.unique) var cover_i:Int
     var first_sentence:[String]
     var id_amazon:[String]
-    
+    var image:Data?
     
     init(author_name: [String], title: String, cover_i: Int, first_sentence: [String], id_amazon: [String]) {
         self.author_name = author_name

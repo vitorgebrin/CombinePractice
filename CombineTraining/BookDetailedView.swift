@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct BookDetailedView: View {
+    @Environment (\.modelContext) private var modelContext
+    @Query(sort: \Book.title) var books:[Book]
+    @State var favorite:Bool = false
     var book:Book
     var body: some View {
         Text(book.title)
@@ -52,8 +56,20 @@ struct BookDetailedView: View {
                     .padding(.horizontal)
                     .padding(.top,5)
             }
-        }
+            
+            Button(favorite ? "Already on My books" : "Add to My books" ){
+                if !favorite{
+                    modelContext.insert(book)}
+                favorite.toggle()
+            }
+        }.onAppear(perform: {checkIfAdded()})
         
+    }
+    
+    func checkIfAdded(){
+        if let index = books.firstIndex(where: { $0.title == book.title }) {
+            self.favorite.toggle()
+        }
     }
 }
 
