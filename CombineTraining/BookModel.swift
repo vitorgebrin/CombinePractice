@@ -15,6 +15,7 @@ class Book: Codable {
     @Attribute(.unique) var cover_i:Int
     var first_sentence:[String]
     var id_amazon:[String]
+    @Attribute(.externalStorage)
     var image:Data?
     
     init(author_name: [String], title: String, cover_i: Int, first_sentence: [String], id_amazon: [String]) {

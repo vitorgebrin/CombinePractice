@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import Combine
 
 struct BookDetailedView: View {
     @Environment (\.modelContext) private var modelContext
@@ -17,13 +18,15 @@ struct BookDetailedView: View {
         Text(book.title)
             .font(.title)
         
-        AsyncImage(url:URL(string:"https://covers.openlibrary.org/b/id/\(book.cover_i).jpg")){ image in
-            image
-                .resizable()
-                .scaledToFit()
-                .frame(width: 200).clipShape(RoundedRectangle(cornerRadius: 10))
-        } placeholder: {
-            ProgressView()
+        VStack{
+            if let image = book.image {
+                Image(uiImage: UIImage(data: image)!)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+            } else{ProgressView()
+            }
         }.frame(width: 200)
         VStack(alignment: .leading){
             Text("First Sentence:")

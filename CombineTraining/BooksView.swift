@@ -16,8 +16,8 @@ class BooksViewModel: ObservableObject {
     @Published private(set) var isLoading:Bool?
     @Published var textFieldText:String = ""
     @Published var textIsValid:Bool = false
-    
     var cancellables = Set<AnyCancellable>()
+    
     init(){
         textFieldSubscriber()
     }
@@ -57,10 +57,39 @@ class BooksViewModel: ObservableObject {
                     }
                 } receiveValue: { [weak self] bookJson in
                     self?.books = bookJson.docs
+                    self?.fetchImage()
                     
                 }.store(in: &cancellables)
         }
         
+    }
+    func fetchImage() {
+        for book in self.books{
+            URLSession.shared.dataTaskPublisher(for: URL(string: "https://covers.openlibrary.org/b/id/\(book.cover_i).jpg")!)
+                .receive(on:DispatchQueue.main)
+                .map(handleResponse)
+                .sink {resposta in
+                    switch resposta{
+                    case .failure(let error):
+                        print("Error with Image download")
+                        print(error.localizedDescription)
+                    default:
+                        break
+                    }
+                } receiveValue: {image in
+                    book.image = image?.pngData()
+                }.store(in: &cancellables)
+        }
+    }
+    
+    func handleResponse(data:Data?, response:URLResponse?) -> UIImage? {
+        guard
+            let data = data,
+            let image = UIImage(data: data),
+            let response = response as? HTTPURLResponse,
+            response.statusCode >= 200 && response.statusCode < 300 else{ // general HTTP response codes
+            return nil}
+        return image
     }
     
     enum BookError {

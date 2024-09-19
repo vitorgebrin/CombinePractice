@@ -7,19 +7,22 @@
 
 import SwiftUI
 
+
 struct BookCard: View {
     let book:Book
     var body: some View {
         
         HStack(alignment:.top){
-            AsyncImage(url:URL(string:"https://covers.openlibrary.org/b/id/\(book.cover_i).jpg")){ image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 60).clipShape(RoundedRectangle(cornerRadius: 10))
-            } placeholder: {
-                ProgressView()
-            }.frame(width: 80)
+            VStack{
+                if let image = book.image {
+                    Image(uiImage: (UIImage(data: image) ?? UIImage(systemName: "plus")!))
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 60)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                } else{ProgressView()
+                }
+            }.frame(width:80)
             VStack(alignment: .leading){
                 Text(book.title)
                     .font(.title3)
