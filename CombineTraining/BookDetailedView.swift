@@ -60,10 +60,18 @@ struct BookDetailedView: View {
                     .padding(.top,5)
             }
             
-            Button(favorite ? "Already on My books" : "Add to My books" ){
+            Button{
                 if !favorite{
-                    modelContext.insert(book)}
+                    modelContext.insert(book)} else {modelContext.delete(book)}
                 favorite.toggle()
+            } label: {
+                
+                HStack {
+                    Image(systemName: (favorite ? "star.fill" : "star" )).foregroundStyle(.yellow)
+                    
+                    Text(favorite ? "Already on My books" : "Add to My books" ).foregroundStyle(.black)}
+                .padding(.horizontal)
+                .padding(.top,20)
             }
         }.onAppear(perform: {checkIfAdded()})
         

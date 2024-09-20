@@ -17,7 +17,7 @@ struct MyBooksView: View {
             VStack {
                 List{
                     ForEach(books){ book in
-                        BookCard(book: book)
+                        NavigationLink{BookDetailedView(book: book)} label: {BookCard(book: book)}
                         
                     }.onDelete(perform: { indexSet in
                         indexSet.forEach{ index in

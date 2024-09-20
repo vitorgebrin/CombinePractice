@@ -16,6 +16,7 @@
 		6BA11D932C8B1E7100062000 /* CombineTrainingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA11D922C8B1E7100062000 /* CombineTrainingTests.swift */; };
 		6BA11D9D2C8B1E7100062000 /* CombineTrainingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA11D9C2C8B1E7100062000 /* CombineTrainingUITests.swift */; };
 		6BA11D9F2C8B1E7100062000 /* CombineTrainingUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA11D9E2C8B1E7100062000 /* CombineTrainingUITestsLaunchTests.swift */; };
+		6BA1217E2C9D954900A5D38B /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1217D2C9D954900A5D38B /* BookViewModel.swift */; };
 		6BD8E1312C8B3C2A00950585 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8E1302C8B3C2A00950585 /* BookModel.swift */; };
 		6BD8E1332C8B413300950585 /* BooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8E1322C8B413300950585 /* BooksView.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		6BA11D982C8B1E7100062000 /* CombineTrainingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CombineTrainingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA11D9C2C8B1E7100062000 /* CombineTrainingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineTrainingUITests.swift; sourceTree = "<group>"; };
 		6BA11D9E2C8B1E7100062000 /* CombineTrainingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineTrainingUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6BA1217D2C9D954900A5D38B /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 		6BD8E1302C8B3C2A00950585 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		6BD8E1322C8B413300950585 /* BooksView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +108,7 @@
 				6BD8E1322C8B413300950585 /* BooksView.swift */,
 				6B06AE272C96FE0D00F5633A /* BookDetailedView.swift */,
 				6B43CDB12C9B264B00F54F24 /* MyBooksView.swift */,
+				6BA1217D2C9D954900A5D38B /* BookViewModel.swift */,
 				6B8338892C9056CB00EA5137 /* BookCard.swift */,
 				6BD8E1302C8B3C2A00950585 /* BookModel.swift */,
 				6BA11D852C8B1E7100062000 /* Assets.xcassets */,
@@ -270,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B83388A2C9056CB00EA5137 /* BookCard.swift in Sources */,
+				6BA1217E2C9D954900A5D38B /* BookViewModel.swift in Sources */,
 				6B43CDB22C9B264B00F54F24 /* MyBooksView.swift in Sources */,
 				6BD8E1332C8B413300950585 /* BooksView.swift in Sources */,
 				6BD8E1312C8B3C2A00950585 /* BookModel.swift in Sources */,
